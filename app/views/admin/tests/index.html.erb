@@ -1,0 +1,74 @@
+<body class="g-sidenav-show  bg-gray-200">
+  <%= render "/layouts/header" %>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <%= render "/shared/nav_bar" %>
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-3 pb-2">
+                <h6 class="text-white text-capitalize ps-3">Tests</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Time(in hours)</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tags</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if @tests.length == 0 %>
+                      <td class="align-middle" colspan="5">
+                        <p class="text-xs font-weight-bold mb-0 text-center">No data available</p>
+                      </td>
+                    <% end %>
+
+                    <% @tests.each do |test| %>
+                      <tr>
+                        <td class="align-middle">
+                          <div class="d-flex px-3 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm"><%= test.name %></h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="align-middle">
+                          <p class="text-xs font-weight-bold mb-0"><%= test.total_time %></p>
+                        </td>
+                        <td class="align-middle">
+                          <p class="text-xs font-weight-bold mb-0"><%= trim_text(test.tags) %></p>
+                        </td>
+                        <td class="align-middle">
+                          <p class="text-xs font-weight-bold mb-0"><%= test.status.capitalize %></p>
+                        </td>
+                        <td class="align-middle">
+                          <%= link_to edit_test_path(test), class: "btn btn-sm btn-info button_to_action" do %>
+                            <i class="material-icons opacity-10">edit</i>
+                          <% end %>
+                          <%= link_to test, method: :delete, class: "btn btn-sm btn-danger button_to_action" do %>
+                            <i class="material-icons opacity-10">delete</i>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= render "/layouts/footer" %>
+    </div>
+  </main>
+</body>

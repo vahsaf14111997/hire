@@ -1,0 +1,47 @@
+<body class="g-sidenav-show  bg-gray-200">
+  <%= render "/layouts/header" %>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <%= render "/shared/nav_bar" %>
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <%= render "/shared/user_nav" %>
+
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-3 pb-2">
+                <h6 class="text-white text-capitalize ps-3">Import Candidates</h6>
+              </div>
+            </div>
+            <div class="card-body px-12 pb-2">
+              <%= form_with url: user_bulk_upload_path, local: true do |form| %>
+                <div class="text-center">
+                  <label for="file" class="btn btn-primary" id="filelbl">Choose file</label>
+                </div>
+                <div class="input-group input-group-outline my-3">
+                  <%= form.file_field :file, id:"file", class: "form-control", accept: ".xlsx", required: true, onchange: "getFile(this.value);", style:"display:none;" %>
+                </div>
+
+                <div class="actions">
+                  <%= form.submit "Import & Sent test", id:"action", class: "btn btn-lg bg-gradient-primary btn-lg w-100 mt-2 mb-2" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= render "/layouts/footer" %>
+    </div>
+  </main>
+  <script>
+    function getFile(filename)
+    {
+      var newname = filename.replace(/^.*\\/,"");
+      document.getElementById("filelbl").innerHTML = newname;
+      document.getElementById("action").className = "btn btn-lg bg-gradient-success btn-lg w-100 mt-2 mb-0";
+    }
+  </script>
+</body>

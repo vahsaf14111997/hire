@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hi <%= @mail_data['name'] %>!</p><br>
+    <p>You have been successfully registered for Spritle Online Test.</p>
+    <p>Please find your login credentials below.</p>
+    <p>Username / Email - <%= @mail_data['email'] %></p>
+    <p>Password - <%= @mail_data['password'] %></p>
+    <p>Test link - <a href='<%= @mail_data["test_link"] %>'><%= @mail_data["test_link"] %><a></p>
+    <p><b>Thanks and Regards,</b></p><p>Spritle Hiring Team.</p>
+  </body>
+</html>

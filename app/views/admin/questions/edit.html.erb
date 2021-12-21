@@ -1,0 +1,28 @@
+<body class="g-sidenav-show  bg-gray-200">
+  <%= render "/layouts/header" %>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <%= render "/shared/nav_bar" %>
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <%= render "/shared/question_nav" %>
+
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Edit Question</h6>
+              </div>
+            </div>
+            <div class="card-body px-12 pb-2">
+              <%= render 'form', question: @question %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= render "/layouts/footer" %>
+    </div>
+  </main>
+</body>

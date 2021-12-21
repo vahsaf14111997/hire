@@ -1,0 +1,70 @@
+<body class="bg-gray-200">
+  <main class="main-content mt-0">
+    <div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-4 col-md-8 col-12 mx-auto">
+            <div class="card z-index-0 fadeIn3 fadeInBottom">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="brand-logo">
+                  <%= image_tag 'spritle_logo.png', style: 'width:120px' %>
+                </div>
+                <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 brand-logo">
+                  <h4 class="text-white font-weight-bolder mt-2 mb-0">Hello! let's get started</h4>
+                  <h6 class="text-white font-weight-bolder mt-2 mb-0">Sign in to continue.</h6>
+                </div>
+              </div>
+              <div class="card-body">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name),  class: "text-start") do |f| %>
+                  <div class="input-group input-group-outline my-3">
+                    <%= f.label :email, class: "form-label" %>
+                    <%= f.email_field :email, autocomplete: "email", class: "form-control", required: true %>
+                  </div>
+                
+                  <div class="input-group input-group-outline my-3">
+                    <%= f.label :password, class: "form-label" %>
+                    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", required: true %>
+                  </div>
+                
+                  <% if devise_mapping.rememberable? %>
+                    <div class="input-group input-group-outline my-3">
+                      <%= f.check_box :remember_me, class: "form-check-input" %>
+                      <%= f.label :remember_me, class: "form-check-label" %>
+                    </div>
+                  <% end %>
+                
+                  <div class="actions">
+                    <%= f.submit "Sign in", class: "btn bg-gradient-primary w-100 my-4 mb-2" %>
+                  </div>
+                  <p class="mt-4 text-sm text-center">
+                    Don't have an account?
+                    <%= link_to  "Sign Up", new_user_registration_path, method: :get, :class => 'text-primary text-gradient font-weight-bold' %>
+                  </p>
+                <% end %>
+
+                <%#= render "devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer position-absolute bottom-2 py-2 w-100">
+        <div class="container">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-12 col-md-6 my-auto">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://spritle.com" class="font-weight-bold" target="_blank">Spritle</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+</body>
